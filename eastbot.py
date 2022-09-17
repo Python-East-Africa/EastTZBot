@@ -660,7 +660,7 @@ async def nje_ya_mada(client: Client, message: Message):
 
 @app.on_callback_query(filters.regex(r"extras"))
 async def help_menu_response(client: Client, query: CallbackQuery):
-    query.answer(text="Coming Soon", show_alert=True)
+    await query.answer(text="Coming Soon", show_alert=True)
 
 
 app.run()
