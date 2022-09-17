@@ -256,7 +256,7 @@ async def help_menu_function(client, message):
                     ),
                     InlineKeyboardButton(
                         "Zaidi",
-                        callback_data="extras.helpresponse",
+                        callback_data="extras",
                     ),
                 ],
                 [
@@ -653,6 +653,14 @@ async def nje_ya_mada(client: Client, message: Message):
         caption="Tafadhali, soma nyaraka za python: https://docs.python.org",
         reply_to_message_id=message.reply_to_message.id,
     )
+
+
+########## EXTRA FEATURES ##########
+
+
+@app.on_callback_query(filters.regex(r"extras"))
+async def help_menu_response(client: Client, query: CallbackQuery):
+    query.answer(text="Coming Soon", show_alert=True)
 
 
 app.run()
