@@ -140,7 +140,7 @@ async def welcome(client, message):
             ]
         ),
     )
-    await asyncio.sleep(6000)
+    await asyncio.sleep(600)
     await message_to_reply.delete()
 
 
