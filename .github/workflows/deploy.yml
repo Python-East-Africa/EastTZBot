@@ -15,7 +15,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         source: "*"
-        target: "/home/${{ secrets.USERNAME }}/fuadhabib"
+        target: "/home/${{ secrets.USERNAME }}/eastbot"
     - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@master
       with:
