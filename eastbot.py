@@ -64,7 +64,7 @@ CAPTCHA_EMOJIS = [
 
 MENTION = "[{}](tg://user?id={})"
 
-MESSAGE = "Karibu {}! Chagua emoji's unazoziona. Unaruhusiwa kukosea mara tatu tu."
+MESSAGE = "Karibu {}! Chagua emoji's unazoziona.Una dakika tatu na unaruhusiwa kukosea mara tatu tu."
 
 
 @app.on_message(filters.new_chat_members)
@@ -140,7 +140,7 @@ async def welcome(client, message):
             ]
         ),
     )
-    await asyncio.sleep(600)
+    await asyncio.sleep(180)
     await message_to_reply.delete()
 
 
@@ -663,6 +663,40 @@ async def nje_ya_mada(client: Client, message: Message):
 @app.on_callback_query(filters.regex(r"extras"))
 async def help_menu_response(client: Client, query: CallbackQuery):
     await query.answer(text="Coming Soon", show_alert=True)
+
+
+########## DELETE SPAM ##########
+
+
+@app.on_message(filters.regex(r"t\.me\/[-a-zA-Z0-9.]+(\/\S*)?"))
+async def spam(client: Client, message: Message):
+
+    user = await client.get_chat_member(
+        chat_id=message.chat.id, user_id=message.from_user.id
+    )
+
+    if (
+        user.status == enums.ChatMemberStatus.OWNER
+        or user.status == enums.ChatMemberStatus.ADMINISTRATOR
+    ):
+        return
+
+    await message.delete()
+
+
+@app.on_message(filters.forwarded)
+async def forwaded(client: Client, message: Message):
+    user = await client.get_chat_member(
+        chat_id=message.chat.id, user_id=message.from_user.id
+    )
+
+    if (
+        user.status == enums.ChatMemberStatus.OWNER
+        or user.status == enums.ChatMemberStatus.ADMINISTRATOR
+    ):
+        return
+
+    await message.delete()
 
 
 app.run()
