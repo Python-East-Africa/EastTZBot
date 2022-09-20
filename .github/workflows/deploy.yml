@@ -25,8 +25,8 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           cd /home/${{ secrets.USERNAME }}/eastbot
-          echo ${{ secrets.PASSWORD }} | sudo -S systemctl stop eastbot.service
+          echo ${{ secrets.PASSWORD }} | sudo -S systemctl stop python-eastafrica-bot.service
           source venv/bin/activate
           pip install -r requirements.txt
           deactivate
-          echo ${{ secrets.PASSWORD }} | sudo -S systemctl start eastbot.service
+          echo ${{ secrets.PASSWORD }} | sudo -S systemctl start python-eastafrica-bot.service
