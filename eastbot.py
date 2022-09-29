@@ -784,7 +784,7 @@ async def instruction_move_9(client: Client, query: CallbackQuery):
 
     await query.answer()
 
-    instruction = query.data
+    instruction = query.data.split(".")[0]
 
     if list1[0] == emoji.__getattribute__("WHITE_LARGE_SQUARE"):
         if instruction == "d" or instruction == "r":
@@ -820,12 +820,12 @@ async def instruction_move_9(client: Client, query: CallbackQuery):
         text="`" + move(3, 9, instruction, list1) + "`",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("Up", callback_data="u")],
+                [InlineKeyboardButton("Up", callback_data="u.puzzle-game")],
                 [
-                    InlineKeyboardButton("Left", callback_data="l"),
-                    InlineKeyboardButton("Right", callback_data="r"),
+                    InlineKeyboardButton("Left", callback_data="l.puzzle-game"),
+                    InlineKeyboardButton("Right", callback_data="r.puzzle-game"),
                 ],
-                [InlineKeyboardButton("Down", callback_data="d")],
+                [InlineKeyboardButton("Down", callback_data="d.puzzle-game")],
             ]
         ),
     )
