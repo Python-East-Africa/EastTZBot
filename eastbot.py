@@ -815,20 +815,23 @@ async def instruction_move_9(client: Client, query: CallbackQuery):
         else:
             if instruction == "l" or instruction == "u":
                 return
+    try:
 
-    await query.edit_message_text(
-        text="`" + move(3, 9, instruction, list1) + "`",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [InlineKeyboardButton("Up", callback_data="u.puzzle-game")],
+        await query.edit_message_text(
+            text="`" + move(3, 9, instruction, list1) + "`",
+            reply_markup=InlineKeyboardMarkup(
                 [
-                    InlineKeyboardButton("Left", callback_data="l.puzzle-game"),
-                    InlineKeyboardButton("Right", callback_data="r.puzzle-game"),
-                ],
-                [InlineKeyboardButton("Down", callback_data="d.puzzle-game")],
-            ]
-        ),
-    )
+                    [InlineKeyboardButton("Up", callback_data="u.puzzle-game")],
+                    [
+                        InlineKeyboardButton("Left", callback_data="l.puzzle-game"),
+                        InlineKeyboardButton("Right", callback_data="r.puzzle-game"),
+                    ],
+                    [InlineKeyboardButton("Down", callback_data="d.puzzle-game")],
+                ]
+            ),
+        )
+    except FloodWait as e:
+        await asyncio.sleep(e.value)
 
     if list1 == answer_list:
         await query.edit_message_text(
