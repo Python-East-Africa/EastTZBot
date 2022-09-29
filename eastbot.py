@@ -8,6 +8,7 @@ from pyrogram.types import (
     Message,
 )
 import asyncio
+from pyrogram.errors import FloodWait
 from datetime import datetime, timedelta
 from random import sample, shuffle
 
