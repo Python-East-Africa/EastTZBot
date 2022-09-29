@@ -837,6 +837,8 @@ async def instruction_move_9(client: Client, query: CallbackQuery):
         await query.edit_message_text(
             text="Congratulations! You have solved the Puzzle"
         )
+        await asyncio.sleep(60)
+        await query.message.delete()
         return
 
 
