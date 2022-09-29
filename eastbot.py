@@ -759,7 +759,7 @@ def move(p_number, p_puzzle_number, instruction, list1):
 
 
 @app.on_callback_query(filters.regex(r"puzzle-start"))
-async def start(client: Client, message: Message):
+async def start(client: Client, query: CallbackQuery):
 
     list1, message_output = produce_9number()
     await query.edit_message_text(
