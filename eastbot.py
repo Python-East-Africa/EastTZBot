@@ -665,13 +665,13 @@ async def help_menu_response(client: Client, query: CallbackQuery):
 
     await query.answer()
     await query.edit_message_text(
-        text=ADMIN_HELP_SWITCHER[queried],
+        text="Here are some extra goodies",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
                         "Puzzle",
-                        callback_data="puzzle",
+                        callback_data="puzzle-start",
                     ),
                     InlineKeyboardButton(
                         "Help Menu",
