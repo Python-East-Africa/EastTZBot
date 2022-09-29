@@ -723,7 +723,7 @@ def produce_9number():
         list1 = [emoji.__getattribute__(e) for e in list1]
 
         list2 = []
-        random.shuffle(list1)
+        shuffle(list1)
         # to make sure it is solvable, the inverse number must be even
         inverse_number = 0
         for i in list1:
