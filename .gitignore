@@ -1,3 +1,6 @@
 venv/
 callbackqueryreply.txt
 message.txt
+__pycache__/
+eastbot.session
+eastbot.session-journal
